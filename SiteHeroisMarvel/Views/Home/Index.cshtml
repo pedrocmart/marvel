@@ -1,0 +1,56 @@
+﻿@model List<SiteHeroisMarvel.Models.Personagem>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .row, .group {
+    }
+
+        .row:nth-child(odd) {
+            background-color: white;
+        }
+
+        .row:nth-child(even) {
+            background-color: lightgray;
+        }
+</style>
+<div>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Pesquisa</legend>
+            <label for="pesquisa"> Digite o nome do Herói:</label>
+            <input type="text" name="nomeHeroi" id="nomeHeroi" />
+            <br />
+            <input type="submit" id="submit" />
+            <br />
+            <br />
+            <br />
+        </fieldset>
+    }
+
+    @foreach (var item in Model)
+    {
+        <div class="row group subgroup">
+            <div class="wrap" style="display: contents;">
+                <div class="col-md-4">
+                    <img src="@item.UrlImagem" height="200" width="200" />
+                </div>
+                <div class="col-md-8">
+                    <h2><a href="@item.UrlWiki" target="_blank">@item.Nome</a> - ID: @item.ID</h2>
+                    <b>Descrição:</b> <p>@item.Descricao</p>
+
+                    <b>Histórias:</b>
+                    <br />
+                    @foreach (var historia in item.Historias)
+                    {
+                        @historia
+                        <br />
+                    }
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+    }
+</div>

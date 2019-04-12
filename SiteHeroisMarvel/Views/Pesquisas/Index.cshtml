@@ -1,0 +1,15 @@
+﻿@model SiteHeroisMarvel.Models.PesquisasRealizadas
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h2>Pesquisas Realizadas</h2>
+    @foreach (var item in Model.Pesquisas)
+    {
+        @item
+        <br />
+    }
+</div>
+
+
